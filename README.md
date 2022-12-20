@@ -17,6 +17,7 @@ A TensorFlow-lite model is also created using quantization and pruning, achievin
 
 ### Run Locally
 
+#### Run on system
 Clone the project
 
 ```bash
@@ -39,4 +40,29 @@ Run python file
 
 ```bash
   python detect.py
+```
+
+#### Run via Docker
+In order to run this model through docker allow X server connection to access display.
+
+On Terminal run
+
+```bash
+# Allow X server connection
+xhost +local:*
+```
+
+And now run the app on docker
+
+```bash
+ docker run --rm -it --device /dev/video0 -e "DISPLAY=$DISPLAY" -v /tmp/.X11-unix/:/tmp/.X11-unix/ cybermachine/trafficsense:latest
+```
+
+Press `ESC` to close the screen.
+
+Also revoke access to X server connection after use.
+
+```bash
+# Disallow X server connection
+xhost -local:*
 ```
