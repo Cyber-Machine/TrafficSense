@@ -53,6 +53,12 @@ Run python file
 #### Run via Docker
 In order to run this model through docker allow X server connection to access display.
 
+Pull image from dockerhub 
+
+```bash
+docker pull cybermachine/trafficsense
+```
+
 On Terminal run
 
 ```bash
