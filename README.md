@@ -1,19 +1,27 @@
 # TrafficSense
 
-This repository contains a computer vision model for identifying police hand signals using TensorFlow & Tensorflow-lite. The model is trained on a custom dataset of images demonstrating various hand signals and achieves an accuracy of 80% on the test set.
+This repository contains a computer vision model for identifying police hand signals using TensorFlow & Tensorflow-lite. The model is trained on a custom dataset of images demonstrating various hand signals and achieves an `accuracy of ~86% on the test set`.
 
 Various techniques have been used to improve upon the model's accuracy such as Data Augmentation, Dropout, validation sets, etc.
 
-Pose Detection was identified by `movenet-thunder` model which is lighter and achieves a realtime detection.
-Classification of poses was done on a custom Neural Network.
+Pose
+ Detection was identified by `movenet-thunder` model which is lighter and achieves a realtime detection.
+Classification of poses was done on a custom layered Neural Network.
 
 A TensorFlow-lite model is also created using quantization and pruning, achieving similar accuracy with just a fraction of the original model size (26KB). This can be used in IoT devices like Raspberry Pi / Arduino for detection.
+
+It can classify between four poses :
+- `front` - To stop vehicles coming from front
+- `behind` - To stop vehicles coming from behind
+- `frandbk` -  To stop vehicles simultaneously from front and behind
+- `close` - Warning  signal closing all vehicles.
 
 ### Libraries Used
 - TensorFlow - Used for model training and inference
 - Numpy - Used for array manipulation
 - OpenCV - Used for image preprocessing and display
-
+- Tensorflow-lite - Used for model deployment on edge devices
+- Docker - Used for model deployment on DockerHub
 
 ### Run Locally
 
@@ -66,3 +74,10 @@ Also revoke access to X server connection after use.
 # Disallow X server connection
 xhost -local:*
 ```
+
+### Run Remotely
+
+In order to run this model on remotely, upload `TrafficSense_Colab.ipynb` to [Google Colab](https://colab.research.google.com/) and 
+run all the cells.
+
+Output is generated as `output.mp4` inside TrafficSense folder in colab.
